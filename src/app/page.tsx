@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export default function HomePage() {
   const allSharpNotes = [
@@ -123,21 +122,12 @@ export default function HomePage() {
 
     const orderedNotes = firstHalf.concat(secondHalf);
 
-    const scale = [
-      orderedNotes[0],
-      orderedNotes[2],
-      orderedNotes[4],
-      orderedNotes[5],
-      orderedNotes[7],
-      orderedNotes[9],
-      orderedNotes[11],
-    ];
-
-    return scale;
+    const scaleIndices = [0, 2, 4, 5, 7, 9, 11];
+    return scaleIndices.map((i) => orderedNotes[i]!);
   }
 
   const [currentKey, setCurrentKey] = useState("A");
-  let notes = createMajorKey(currentKey).join(",");
+  const notes = createMajorKey(currentKey).join(",");
   console.log(currentKey);
   console.log(notes);
 
